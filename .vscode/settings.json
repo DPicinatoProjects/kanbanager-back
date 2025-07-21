@@ -1,0 +1,20 @@
+{
+  // Eslint and fix on save (Correções automatizadas com base em regras específicas de lint)
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit"
+  },
+  // Executa o formatador de código configurado automaticamente ao salvar o arquivo.
+  "editor.formatOnSave": true,
+  // Definir formatador padrão o slint
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  // Forçar a formatação pelo slint (não formatar pelo prettier)
+  "eslint.format.enable": true,
+  // Apenas validar para essas linguagens
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact"
+  ]
+}
