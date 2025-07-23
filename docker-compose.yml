@@ -1,7 +1,6 @@
 services:
   postgres:
     image: postgres:16.4
-    restart: always
     container_name: kanbanager_postgres
     environment:
       - POSTGRES_USER=kanbanager
