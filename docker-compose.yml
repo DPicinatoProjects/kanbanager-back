@@ -2,14 +2,28 @@ services:
   postgres:
     image: postgres:16.4
     restart: always
-    container_name: Kanbanager
+    container_name: kanbanager_postgres
     environment:
       - POSTGRES_USER=kanbanager
       - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydb
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
       - '5432:5432'
+  
+  dragonfly:
+    image: 'docker.dragonflydb.io/dragonflydb/dragonfly:v1.31.2'
+    container_name: kanbanager-dragonfly
+    environment:
+      - DRAGONFLY_LOG_LEVEL=info
+    ulimits:
+      memlock: -1
+    ports:
+      - "6379:6379"
+    volumes:
+      - dragonflydata:/data
 
 volumes:
   postgres:
+  dragonflydata:
