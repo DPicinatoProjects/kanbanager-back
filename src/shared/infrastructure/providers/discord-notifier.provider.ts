@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { HealthReport } from '../../domain/entities/health-report';
+import { HealthReport } from '../../../modules/health/domain/entities/health-report';
 import { ENV } from '@/configs/env.config';
+import { IDiscordNotifier } from '@/shared/domain/providers/discord-notifier.provider';
 
-export class DiscordNotifier {
+export class DiscordNotifier implements IDiscordNotifier {
   async notify(reports: HealthReport[]): Promise<void> {
     const content = reports
       .map(r => {

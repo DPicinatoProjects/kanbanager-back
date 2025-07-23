@@ -1,13 +1,15 @@
+import { Inject } from '@nestjs/common';
 import { HealthReport } from '../../domain/entities/health-report';
 import { PrismaHealthIndicator } from '../../infrastructure/health-indicators/prisma-health-indicator.health';
 import { RedisHealthIndicator } from '../../infrastructure/health-indicators/redis-health-indicator.health';
-import { DiscordNotifier } from '../../infrastructure/providers/discord-notifier.provider';
+import { IDiscordNotifier } from '@/shared/domain/providers/discord-notifier.provider';
 
 export class CheckHealthUseCase {
   constructor(
     private readonly redis: RedisHealthIndicator,
     private readonly prisma: PrismaHealthIndicator,
-    private readonly notifier: DiscordNotifier,
+    @Inject(IDiscordNotifier)
+    private readonly notifier: IDiscordNotifier,
   ) {}
 
   async execute(): Promise<HealthReport[]> {
