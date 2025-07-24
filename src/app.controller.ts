@@ -1,6 +1,6 @@
 import { Controller, Get, HttpCode, HttpStatus, Inject } from '@nestjs/common';
 import { RedisHealthIndicator } from './modules/health/infrastructure/health-indicators/redis-health-indicator.health';
-import { DiscordNotifier } from './shared/infrastructure/providers/discord-notifier.provider';
+import { DiscordNotifier } from './shared/infrastructure/providers/notifiers/discord-notifier.provider';
 import { CheckHealthUseCase } from './modules/health/application/use-case/check-health.use-case';
 import { PrismaHealthIndicator } from './modules/health/infrastructure/health-indicators/prisma-health-indicator.health';
 
